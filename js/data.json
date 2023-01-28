@@ -1,0 +1,5 @@
+[
+    {"nombre": "Hamburgesa Notable","precio": 430,"id": 1, "descripcion":"Doble carne con doble queso cheddar y panceta ahumada"},
+    {"nombre": "Hamburgesa Magistral","precio": 200, "id": 2, "descripcion": "Hamburguesa comun con lechuga, tomate, queso y salsa dolce"},
+    {"nombre": "Hamburgesa 4.0", "precio": 540, "id": 3,"descripcion":"4 Carnes con queso, panceta ahumada cebolla caramelizada y salsa dolce"}
+]

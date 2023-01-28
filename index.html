@@ -5,63 +5,122 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dolce Burgers</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+    <title>Dolce Burgres</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-light bg-dark min-vw-100">
-            <h2 class="p-3 text-white">Dolce Burgers</h2>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#modalCarrito">
-                        <i class="bi bi-cart mx-5" id="carritoContenedor">0</i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <div class="bg">
+            <h1 class="lc">Dolce Burgres</h1>
+        </div>
     </header>
+
     <main>
-        <div class="row mt-5" id="contenedor"></div>
+        <div class="divPrincipal container">
+            <div class="divIzq container">
+                <h4>Menu </h4>
+                <div id="contenedorMenu"></div>
+            </div>
+
+            <div class="divDer">
+                <div class="divCarrito">
+                    <h4>Carrito</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Accion</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="items"></tbody>
+                        <tfoot>
+                            <tr id="footer">
+                                <th scope="row" colspan="5">Carrito Vacio - Sin orden.</th>
+                            </tr>
+                        </tfoot>
+
+
+
+
+
+
+
+
+
+                    </table>
+                </div>
+                <div id="contenedorCarrito"></div>
+            </div>
+        </div>
+        <div class="fomrularioContacto container">
+            <form action="" class="formulario" >
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" rerequired>
+
+                <label for="contacto">Numero de contacto</label>
+                <input type="number" id="numero" required>
+
+                <label for="direccion">Direccion de entrega</label>
+                <input type="text" id="direccion" required>
+
+                <button id="btn-pedido">Realizar Pedido</button>
+            </form>
+        </div>
     </main>
 
+    <template id="templateCarrito">
+        <tr>
+            <th scope="row">id</th>
+            <td>cafe</td>
+            <td>1</td>
+            <td>
+                <button class="btn btn-info btn-sm">+</button>
+                <button class="btn btn-danger btn-sm">-</button>
+            </td>
+            <td>$ <span>500</span></td>
+        </tr>
+    </template>
 
-    <div class="container-xl">
-        <div class="modal" tabindex="-1" role="dialog" id="modalCarrito">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Carrito</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body"></div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" id="vaciarCarrito">
-                            Vaciar carrito
-                        </button>
-                        <button type="button" id="comprar" class="btn btn-primary">
-                            Continuar orden
-                        </button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            Cerrar
-                        </button>
+    <template id="templateFooter">
+        <th scope="row" colspan="2">Total Productos</th>
+        <td>10</td>
+        <td>
+            <button class="btn btn-danger btn-sm" id="vaciarCarrito">vaciar todo</button>
+        </td>
+        <td class="font-weight-bold">$ <span>5000</span></td>
+    
+    </template>
 
-                        <span>Precio total:</span>
-                        <p class="text-center" id="precioTotal"></p>
-                    </div>
+
+
+
+    <template id="templateCard">
+        <div class="col-12 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Titulo</h5>
+                    <span>descripcion</span>
+                    <p>precio</p>
+                    <button class="btn btn-dark">Ordenar</button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="js/main.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    </template>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/newmain.js"></script>
+
 </body>
 
 </html>

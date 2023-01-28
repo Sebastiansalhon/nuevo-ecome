@@ -69,7 +69,9 @@ stockProductos.forEach((prod) => {
 if(comprar){
 comprar.addEventListener('click', () => {
     if(carrito.length === 0) {
-        alert("No tienes nada en el carrito, elige algo para continuar la compra")
+        Swal.fire({
+            
+        })
     }else{
         location.href = "orden.html"
         procesarCompra();
@@ -78,10 +80,12 @@ comprar.addEventListener('click', () => {
 }
 
 function agregarProducto (id){
-    const item = stockProductos.find((prod)=> prod.id === id)
+
+const item = stockProductos.find((prod)=> prod.id === id)
     carrito.push(item);
     mostrarCarrito();
 }
+
 if(vaciarCarrito){
 vaciarCarrito. addEventListener('click', () =>  {
     carrito.length = []
@@ -97,7 +101,7 @@ const mostrarCarrito = () => {
     const modalBody = document.querySelector(".modal .modal-body");
     if(modalBody){
     
-    modalBody.innerHTML=''
+    modalBody.innerHTML="";
     carrito.forEach ((prod) => {
         const {id, nombre, desc, precio, cantidad, img} = prod
         modalBody.innerHTML += `
@@ -130,7 +134,7 @@ const mostrarCarrito = () => {
 
 
     if(precioTotal){
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad*prod.precio, 0 )
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0 )
 }
     guardarStorage();
 };
@@ -153,7 +157,7 @@ function procesarCompra(){
         const listaCompra = document.querySelector("#lista-compra tbody")
         const {id, nombre, precio, cantidad} = prod
 
-        const row = document.createElement('tr')
+        const row = document.createElement("tr");
         row.innerHTML += `
         <td>${nombre}</td>
         <td>${precio}</td>
@@ -161,8 +165,9 @@ function procesarCompra(){
         <td>${precio * cantidad}</td>
         `
 
-        listaCompra.appendChild(row)
-    })
+        listaCompra.appendChild(row);
+    }
+);
 }
 }
 

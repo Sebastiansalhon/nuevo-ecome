@@ -1,0 +1,20 @@
+.bg {background-color:black}
+
+.lc {color: orange;}
+
+
+
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    list-style: none;
+}
+
+
+.divCarrito {
+    display: flex;
+}
