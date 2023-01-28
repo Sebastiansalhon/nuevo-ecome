@@ -154,17 +154,40 @@ const btnAccion = e =>{
 
 
 
+let validar = () => {
+    let inputRequeridos = document.querySelectorAll('.formulario [required]')
+    let error = false;
+    for(let i = 0; i< inputRequeridos.length; i++){
+        if(inputRequeridos[i].value == ''){
+            inputRequeridos[i].classList.add('inputError')
+            error = true;
+        }else{
+            inputRequeridos[i].classList.remove('inputError')
+        }
+    }
 
-realizarPedido.addEventListener ('click', () =>{
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Tu pedido se realizo con exito',
-        showConfirmButton: false,
-        timer: 2000
-    })
-})
+    return error;
+};
 
+let obtenerDatos = () => {
+    let error = validar();
+    if(error ){
+        Swal.fire({
+            'title': 'Ingrese los datos para validar su pedido',
+            'text': '(Todos los campos son obligatorios)',
+            'icon' : 'warning'
+        })
+    }else{
+        Swal.fire({
+            'title': 'Tu orden quedo ingresada correctamente',
+            'text': 'Te avisaremos cuando este lista!',
+            'icon' : 'success',
+        })
+
+    }
+}
+
+realizarPedido.addEventListener ('click', obtenerDatos )
 
 
 
