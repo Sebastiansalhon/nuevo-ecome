@@ -1,128 +1,4 @@
-// let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-// const nombre = document.querySelector("#nombre");
-// const contacto = document.querySelector("#numero");
-// const direccion = document.querySelector("#direcicon");
-
-// const menu = document.querySelector("#contenedorMenu");
-
-// const pedirMenu = async() => {
-//     const resp = await fetch("/js/data.json")
-//     const data = await resp.json();
-
-//     data.forEach((burger) => {
-//         const li = document.createElement("li")
-//         li.innerHTML = `
-//         <h4>${burger.nombre}</h4
-//         <p>${burger.descripcion}</p>
-//         <p>${burger.precio}</p>\
-//         <button id=${burger.id}>Agregar a carrtito</button>
-//         `;
-//         menu.append(li);
-//     });
-// };
-// pedirMenu();
-
-
-
-
-// const productos = [];
-
-// let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-// const carritoContenedor = document.createElement('contenedorCarrito');
-// class Producto {
-//     constructor(id, nombre, precio, desc){
-//         this.id = id
-//         this.nombre = nombre
-//         this.precio = precio
-//         this.desc = desc
-//     }
-
-//     pintarProducto() {
-//         const tarjeta = `
-//         <div>
-//         <h4>${this.nombre}</h4
-//         <div>
-//         <p>${this.desc}</p>
-//         </div>
-//         <div>
-//         <p>${this.precio}</p>
-//         </div>
-//         <div>
-//         <button id=${this.id}>Agregar a carrtito</button>
-//         </div<
-//         </div>
-//         `
-//         const menu = document.querySelector('#contenedorMenu')
-//         menu.innerHTML += tarjeta
-//     }
-
-//     agregarEvento () {
-//         const btnAgregar = document.getElementById(`${this.id}`)
-//         const buscarProducto = productos.find ( p => p.id == this.id)
-//         btnAgregar.addEventListener ('click' , () => agregarAlCarrito(buscarProducto))
-//     }
-//     }
-    
-
-
-
-
-// fetch('/js/data.json')
-//     .then (res => res.json())
-//     .then (data => {
-//         data.forEach(prod => {
-//         let nuevoProducto = new Producto (prod.id, prod.nombre, prod.precio, prod.desc)
-//         productos.push(nuevoProducto)
-//     })
-//     productos.forEach( e => {
-//         e.pintarProducto()
-//     })
-//     productos.forEach (e => {
-//         e.agregarEvento()
-//     })
-// })
-//     .catch (error => console.log(error))
-
-
-
-// function agregarAlCarrito(producto) {
-//     const enCarrito = carrito.find(prod => prod.id === producto.id)
-
-//     if(!enCarrito) {
-//         carrito.push({...producto, cantidad: 1 })
-//         localStorage.setItem ('carrito', JSON.stringify(carrito))
-//     } else {
-//         let carroFiltrado = carrito.filter (prod => prod.id != enCarrito.id)
-//         carrito = [
-//             ...carroFiltrado,
-//             {
-//                 ...enCarrito,
-//                 cantidad: enCarrito.cantidad + 1
-//             }
-//         ]
-//         localStorage.setItem('carrito', JSON.stringify(carrito))
-//     }
-//     contador.innerHTML = carrito.reduce((acc, prod) => acc + prod.cantidad, 0)
-// }
-
-
-// const contador = document.getElementById('carritoContador')
-// contador.innerHTML = carrito.reduce((acc, prod) => acc + prod.cantidad, 0)
-
-
-
-// function carritoHTML () {
-//     enCarrito.forEach ((producto => {
-//         const row = document.createElement('p')
-//         row.innerHTML => `
-//         `
-//     }))
-// }
-
-
-
-
+//variables
 const nombre = document.getElementById('nombre')
 const numContacto = document.getElementById('numero')
 const direccion = document.getElementById('direccion')
@@ -138,6 +14,7 @@ const realizarPedido = document.getElementById('btn-pedido')
 
 
 let carrito = {}
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchInfo()
     if(localStorage.getItem('carrito')){
@@ -155,6 +32,8 @@ contenedorMenu.addEventListener('click', e => {
 items.addEventListener ('click', e => {
     btnAccion (e)
 })
+
+//integracion "api" de datos
 const fetchInfo = async () => {
     try {
         const res = await fetch('/js/data.json')
@@ -165,7 +44,7 @@ const fetchInfo = async () => {
     }
 }
 
-
+// Agregar las tarjetas de los objetos en el DOM
 const pintarCards = data => {
     data.forEach(producto => {
         templateCard.querySelector('h5').textContent = producto.nombre
@@ -204,7 +83,7 @@ const setCarrito = objeto => {
     carrito [producto.id] = {...producto}
     pintarCarrito()
 }
-
+//Mostrar articulos del carrito
 const pintarCarrito = () => {
     items.innerHTML = ""
     Object.values(carrito).forEach(producto => {
@@ -225,6 +104,7 @@ const pintarCarrito = () => {
     localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
+//apartado donde se visualiza cantidades sumadas, total sumado y vaciar carrito
 const pintarFooter = () => {
     footer.innerHTML = ''
     if(Object.keys(carrito).length === 0) {
@@ -252,7 +132,7 @@ const pintarFooter = () => {
         pintarCarrito()
     })
 }
-
+// botones de suma y resta de cantidades en el carrito.
 const btnAccion = e =>{
     if(e.target.classList.contains('btn-info')) {
         const producto = carrito[e.target.dataset.id]
