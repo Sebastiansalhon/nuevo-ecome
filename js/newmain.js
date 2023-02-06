@@ -182,6 +182,7 @@ let obtenerDatos = () => {
             'title': 'Tu orden quedo ingresada correctamente',
             'text': 'Te avisaremos cuando este lista!',
             'icon' : 'success',
+            'timer' : 5000
         })
 
     }
